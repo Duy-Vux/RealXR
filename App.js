@@ -6,7 +6,7 @@ import { Panel, Form, FormGroup, FormControl, Button } from "react-bootstrap";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello- julian RealXR</Text>
+      <Text style={styles.text}>I own RealXR now, sorry Jay</Text>
       <StatusBar style="auto" />
     </View>
   );
