@@ -5,16 +5,10 @@ import { Panel, Form, FormGroup, FormControl, Button } from "react-bootstrap";
 
 export default function App() {
   return (
-    <>
-      <View style={styles.container}>
-        <Text style={styles.text}>Hello- julian RealXR</Text>
-        <StatusBar style="auto" />
-      </View>
-      <Notification />
-      <FormGroup controlId="formEmail">
-        <FormControl type="email" placeholder="Email Address" />
-      </FormGroup>
-    </>
+    <View style={styles.container}>
+      <Text style={styles.text}>Hello- julian RealXR</Text>
+      <StatusBar style="auto" />
+    </View>
   );
 }
 
