@@ -1,14 +1,19 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import DiscoverCard from "../component/DiscoverCard";
 
-export default class Login extends React.Component {
+export default class Discover extends React.Component {
   render() {
+    const discoverCardList = [{}, {}, {}];
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Login</Text>
-        <StatusBar style="auto" />
-      </View>
+      <>
+        <DiscoverCard></DiscoverCard>
+        <View style={styles.container}>
+          <Text style={styles.text}>Login</Text>
+          <StatusBar style="auto" />
+        </View>
+      </>
     );
   }
 }
