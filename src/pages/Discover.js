@@ -1,7 +1,22 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, ScrollView} from "react-native";
+import { StyleSheet, Text, View, ScrollView, FlatList } from "react-native";
 import ConcertCard from "../component/ConcertCard";
+
+const data = [
+  { id: '1', title: 'Trending', concerts: [1, 2, 3] },
+  { id: '2', title: 'Live', concerts: [4, 5, 6] },
+  { id: '3', title: 'Upcoming', concerts: [7, 8, 9] },
+  { id: '4', title: 'Suggested Artist', concerts: [10, 11, 12] },
+];
+
+const ConcertRow = ({ concerts }) => (
+  <ScrollView horizontal>
+    {concerts.map((concert) => (
+      <ConcertCard key={concert} />
+    ))}
+  </ScrollView>
+);
 
 export default class Discover extends React.Component {
   render() {
@@ -10,23 +25,19 @@ export default class Discover extends React.Component {
         <ScrollView>
           <View style={{ marginTop: 40, paddingTop: 50}}>
             <Text style={{paddingBottom: 20}}>Discover Page</Text>
-            <Text>Trending</Text>
           </View>
-          <ConcertCard></ConcertCard>
-          <View style={{ marginTop: 40 }}>
-            <Text>Live</Text>
-          </View>
-          <ConcertCard></ConcertCard>
-          <View style={{ marginTop: 40 }}>
-            <Text>Upcoming</Text>
-          </View>
-          <ConcertCard></ConcertCard>
-          <View style={{ marginTop: 40 }}>
-            <Text>Suggested Artist</Text>
-          </View>
-          <ConcertCard></ConcertCard>
+          <FlatList
+            data={data}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <View style={{ marginTop: 40 }}>
+                <Text>{item.title}</Text>
+                <ConcertRow concerts={item.concerts} />
+              </View>
+            )}
+          />
         </ScrollView>
-
+        <StatusBar style="auto" />
       </>
     );
   }
