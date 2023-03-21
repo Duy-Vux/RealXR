@@ -4,5 +4,5 @@ import Artist from "./src/pages/Artist";
 import Discover from "./src/pages/Discover";
 
 export default function App() {
-  return <Artist></Artist>;
+  return <Login></Login>;
 }
