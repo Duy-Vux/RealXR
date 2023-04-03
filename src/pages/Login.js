@@ -8,12 +8,17 @@ export default class Login extends React.Component {
   render() {
     return (
       <LoginScreen
+        logoImageSource={require("../../assets/logo.png")}
         onLoginPress={() => {}}
         onSignupPress={() => {}}
         onEmailChange={(email) => {}}
         onPasswordChange={(password) => {}}
       >
-        <SocialButton text="Continue with Google" onPress={() => {}} />
+        <SocialButton
+          text="Continue with Google"
+          imageSource={require("../../assets/google-logo.png")}
+          onPress={() => {}}
+        />
         <SocialButton text="Continue with Facebook" onPress={() => {}} />
         <SocialButton text="Continue with Twitter" onPress={() => {}} />
       </LoginScreen>
