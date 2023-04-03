@@ -13,7 +13,9 @@ const data = [
 const ConcertRow = ({ concerts }) => (
   <ScrollView horizontal>
     {concerts.map((concert) => (
-      <ConcertCard key={concert} />
+      <View style={{ paddingHorizontal: 10 }} key={concert}>
+        <ConcertCard />
+      </View>
     ))}
   </ScrollView>
 );
@@ -22,7 +24,7 @@ export default class Discover extends React.Component {
   render() {
     return (
       <>
-        <ScrollView>
+        <ScrollView style={{ backgroundColor: "#F5E6FF" }}>
           <View style={{ marginTop: 40, paddingTop: 50}}>
             <Text style={{paddingBottom: 20}}>Discover Page</Text>
           </View>
