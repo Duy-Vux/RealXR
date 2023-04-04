@@ -6,9 +6,10 @@ import Discover from "./src/pages/Discover";
 import CheckoutPage from "./src/pages/Checkout";
 import Concert from "./src/pages/Concert";
 import Orders from "./src/pages/Orders";
+import UserProfile from "./src/pages/UserProfile";
 
 export default function App() {
-  return <Orders></Orders>;
+  return <UserProfile></UserProfile>;
 }
 
 
