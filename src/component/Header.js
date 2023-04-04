@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
   },
-  titleText: { marginRight: 40 },
+  titleText: { marginRight: 40, fontSize: 16, },
 });
 
 export default Header;
