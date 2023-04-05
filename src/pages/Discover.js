@@ -20,7 +20,13 @@ const data = [
 const ConcertRow = ({ concerts }) => (
   <ScrollView horizontal>
     {concerts.map((concert) => (
-      <ConcertCard key={concert} />
+      <TouchableOpacity
+        onPress={() => {
+          this.props.navigation.navigate("Artist");
+        }}
+      >
+        <ConcertCard key={concert} />
+      </TouchableOpacity>
     ))}
   </ScrollView>
 );
@@ -38,16 +44,10 @@ export default class Discover extends React.Component {
             </View>
           )}
           renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() => {
-                this.props.navigation.navigate("Artist");
-              }}
-            >
-              <View style={{ marginTop: 40 }}>
-                <Text>{item.title}</Text>
-                <ConcertRow concerts={item.concerts} />
-              </View>
-            </TouchableOpacity>
+            <View style={{ marginTop: 40 }}>
+              <Text>{item.title}</Text>
+              <ConcertRow concerts={item.concerts} />
+            </View>
           )}
         />
         <StatusBar style="auto" />
