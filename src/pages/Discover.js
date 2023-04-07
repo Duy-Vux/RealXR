@@ -1,13 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-  FlatList,
-} from "react-native";
+import {StyleSheet,Text,View,TouchableOpacity,ScrollView,FlatList,} from "react-native";
 import ConcertCard from "../component/ConcertCard";
 
 const data = [
@@ -17,20 +10,20 @@ const data = [
   { id: "4", title: "Suggested Artist", concerts: [10, 11, 12] },
 ];
 
-const ConcertRow = ({ concerts }) => (
-  <ScrollView horizontal>
+const ConcertRow = ({ concerts, navigation }) => (
+  <ScrollView horizontal style={{ paddingHorizontal: 10 }}>
     {concerts.map((concert) => (
       <TouchableOpacity
+        key={concert}
         onPress={() => {
-          this.props.navigation.navigate("Artist");
+          navigation.navigate("Artist");
         }}
       >
-        <ConcertCard key={concert} />
+        <ConcertCard />
       </TouchableOpacity>
     ))}
   </ScrollView>
 );
-
 export default class Discover extends React.Component {
   render() {
     return (
