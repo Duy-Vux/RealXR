@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList, Pressable} from 'react-native';
 import Container from '../component/Container';
 import Label from '../component/Label';
 import ScreenHeader from '../component/ScreenHeader';
-
+import {View, Text, StyleSheet, FlatList, Pressable, ScrollView, Image} from 'react-native';
+//import Label from '../component/Label';
 
 export default function Orders({navigation}) {
   const OrderCard = ({item}) => {
@@ -16,26 +16,19 @@ export default function Orders({navigation}) {
             style={{fontSize: 18, fontWeight: '500'}}
           />
           <Label
-            text={amount}
-            style={{
-              label: 'Justin Tim',
-              amount: '$35',
-              status: 'Used',
-              color: 'green',   
-              
-              label: 'Selena Gomez',
-              amount: '$45',
-              status: 'Pending',
-              color: 'blue',
-                      
-            }
-            }
+              text={amount}
+              style={{
+              }
+              }
           />
+           
+         
           <Pressable
             style={{
               borderRadius: 3,
               width: '85%',
               paddingVertical: 10,
+              paddingHorizontal: '10%',
               backgroundColor: "#007363",
               justifyContent: 'center',
               alignItems: 'center',
@@ -45,38 +38,38 @@ export default function Orders({navigation}) {
               style={{fontSize: '14', color: "#FFFFFF"}}
             />
           </Pressable>
+         
         </View>
-        <View>
-          <FlatList
+ 
+ 
+        <Image
+              source={{ uri: "https://picsum.photos/200/300" }}
+              style={{ width: 90, height: 90, borderRadius: 25,              marginLeft: 4,
+                marginLeft: '20%',
+              }}
+          />
+ 
+ 
+          <View
+            key={item}
            
-            nestedScrollEnabled
-            ItemSeparatorComponent={() => <View style={{padding:2}} />}
-            data={[1, 2, 3, 4]}
-            numColumns={2}
-            keyExtractor={(item) => `${item}_${new Date().getTime()}_${item}`}
-            renderItem={({item}) => (
-              <View
-                key={item}
-                style={{
-                  backgroundColor:"#005700",
-                  height: 35,
-                  width: 35,
-                  marginLeft: 4,
-                  borderRadius: 3,
-                }}
-              />
-            )}
+            style={{
+              height: 35,
+              width: 35,
+              marginLeft: 4,
+              borderRadius: 3,
+             
+            }}
           />
         </View>
-      </View>
+       
+       
     );
   };
-  
-
-  return (
+   return (
     <Container >
       <ScreenHeader navigation={navigation} label="Past Orders" />
-      
+      <ScrollView>
       <View style={{paddingVertical: 20}}>
         <Label
           text="Sept 23, 2021"
@@ -91,8 +84,8 @@ export default function Orders({navigation}) {
           color: 'green',
         }}
       />
+    
      
-      
      <View style={{paddingVertical: 20}}>
         <Label
           text="Sept 23, 2021"
@@ -107,7 +100,8 @@ export default function Orders({navigation}) {
           color: 'blue',
         }}
       />
-
+ 
+ 
       <View style={{paddingVertical: 20}}>
         <Label
           text="January 23, 2021"
@@ -122,10 +116,15 @@ export default function Orders({navigation}) {
           color: 'red',
         }}
       />
-
-<View style={{paddingVertical: 20}}>
+ 
+ 
+ 
+ 
+ 
+ 
+ <View style={{paddingVertical: 20}}>
         <Label
-          text="January 23, 2021"
+          text="January 24th, 2021"
           style={{opacity: 0.5, fontSize: 13}}
         />
       </View>
@@ -137,31 +136,18 @@ export default function Orders({navigation}) {
           color: 'red',
         }}
       />
-
-
-
-      <View style={{flex:1, paddingVertical:20}}>
-      <View style={{paddingVertical: 20}}>
-        <Label
-          text="March 23, 2023"
-          style={{opacity: 0.5, fontSize: 13}}
-        />
-      </View>
-      <FlatList
-      keyExtractor={(item)=> `${item.label}_${new Date().getTime()}_${item.amount}`}
-        ItemSeparatorComponent={() => <View style={{padding: 5}} />}
-        data={{label: 'Bad Bunny',
-        amount: '$3503',
-        status: 'In transit',
-        color: 'yellow',}}
-        renderItem={({item, index}) => <OrderCard key={index} item={item} />}
-      />
-      </View>
+ 
+ 
+ 
+ 
+      </ScrollView>
     </Container>
+   
   );
-}
-
-const styles = StyleSheet.create({
+ }
+ 
+ 
+ const styles = StyleSheet.create({
   contentContiner: {
     paddingVertical: 30,
     flexDirection: 'row',
@@ -169,6 +155,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: "#ffffff",
     paddingHorizontal: 20,
-    
+   
   },
-});
+ });
+
