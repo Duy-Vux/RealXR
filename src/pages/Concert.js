@@ -6,7 +6,7 @@ export default class Concert extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Login</Text>
+        <Text style={styles.text}>Concert</Text>
         <StatusBar style="auto" />
       </View>
     );
