@@ -8,7 +8,7 @@ import Concert from "./src/pages/Concert";
 import Orders from "./src/pages/Orders";
 
 export default function App() {
-  return <Orders></Orders>;
+  return <CheckoutPage></CheckoutPage>;
 }
 
 
