@@ -25,6 +25,7 @@ const ConcertRow = ({ concerts, navigation }) => (
         onPress={() => {
           navigation.navigate("ConcertDetails");
         }}
+        style={{ marginRight: 25 }}
       >
         <ConcertCard />
       </TouchableOpacity>
@@ -35,7 +36,8 @@ export default class Discover extends React.Component {
   render() {
     return (
       <>
-        <FlatList
+      <View style={styles.container}>
+        <FlatList 
           data={data}
           keyExtractor={(item) => item.id}
           ListHeaderComponent={() => (
@@ -46,8 +48,8 @@ export default class Discover extends React.Component {
             </View>
           )}
           renderItem={({ item }) => (
-            <View style={{ marginTop: 40 }}>
-              <Text>{item.title}</Text>
+            <View style={{ marginTop: 40, backgroundColor: "#ffffff", paddingLeft: 10, paddingBottom: 10, paddingRight: 10}}>
+              <Text style={{ paddingLeft: 15, fontSize: 25 }}>{item.title}</Text>
               <ConcertRow
                 concerts={item.concerts}
                 navigation={this.props.navigation}
@@ -56,6 +58,7 @@ export default class Discover extends React.Component {
           )}
         />
         <StatusBar style="auto" />
+        </View>
       </>
     );
   }
@@ -64,9 +67,11 @@ export default class Discover extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "lightgray",
     alignItems: "center",
     justifyContent: "center",
+    paddingHorizontal: 15
+    
   },
   text: {
     backgroundColor: "red",
