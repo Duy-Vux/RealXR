@@ -41,15 +41,15 @@ export default class Discover extends React.Component {
           data={data}
           keyExtractor={(item) => item.id}
           ListHeaderComponent={() => (
-            <View style={{ marginTop: 20, paddingTop: 20 }}>
-              <Text style={{ paddingBottom: 20, fontSize: 40 }}>
+            <View style={{ marginTop: 10, paddingTop: 10 }}>
+              <Text style={{ fontSize: 40, textAlign: "center", fontFamily: 'Cochin', fontWeight: 'bold'}}>
                 Discover Concerts
               </Text>
             </View>
           )}
           renderItem={({ item }) => (
             <View style={{ marginTop: 40, backgroundColor: "#ffffff", paddingLeft: 10, paddingBottom: 10, paddingRight: 10}}>
-              <Text style={{ paddingLeft: 15, fontSize: 25 }}>{item.title}</Text>
+              <Text style={{ paddingLeft: 15, fontSize: 25, paddingTop: 10, fontFamily: 'Cochin', fontWeight: 'bold'}}>{item.title}</Text>
               <ConcertRow
                 concerts={item.concerts}
                 navigation={this.props.navigation}
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 15
-    
+
   },
   text: {
     backgroundColor: "red",
