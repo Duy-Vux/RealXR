@@ -9,7 +9,7 @@ export default class Login extends React.Component {
       <LoginScreen
         logoImageSource={require("../assets/logo.png")}
         onLoginPress={() => {
-          this.props.navigation.navigate("Orders");
+          this.props.navigation.navigate("Discover");
         }}
         onSignupPress={() => {}}
         onEmailChange={(email) => {}}
@@ -34,7 +34,7 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "red",
     alignItems: "center",
     justifyContent: "center",
   },
