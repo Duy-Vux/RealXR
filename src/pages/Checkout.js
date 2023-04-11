@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import ApplePayIcon from 'react-native-vector-icons/FontAwesome';
+import PayPalIcon from 'react-native-vector-icons/FontAwesome';
+import { FontAwesome } from '@expo/vector-icons';
+
+
+
 
 const sampleItems = [
   { name: 'Item 1', cost: 10.99 },
@@ -8,7 +14,11 @@ const sampleItems = [
   { name: 'Item 3', cost: 30.75 },
 ];
 
+
 const CheckoutPage = () => {
+  const [showCardForm, setShowCardForm] = useState(false); 
+  const [cardNumber, setCardNumber] = useState('');
+
   const [cartItems, setCartItems] = useState(sampleItems);
   const [totalCost, setTotalCost] = useState(
     sampleItems.reduce((sum, item) => sum + item.cost, 0)
@@ -20,6 +30,11 @@ const CheckoutPage = () => {
     setCartItems(newCartItems);
     setTotalCost(totalCost - removedItem.cost);
   };
+
+  const handlePayWithCard = () => {
+    setShowCardForm(prevShowCardForm => !prevShowCardForm);
+  };
+  
 
   return (
     <View style={styles.container}>
@@ -39,110 +54,236 @@ const CheckoutPage = () => {
       </View>
       <View style={styles.paymentContainer}>
         <Text style={styles.paymentTitle}>Payment Options</Text>
-        <TouchableOpacity style={styles.payButton}>
-          <Text style={styles.payButtonText}>Pay with Card</Text>
+
+        
+        <TouchableOpacity style={styles.payButton} onPress={handlePayWithCard}>
+          <Icon name="credit-card" size={20} color="#666" />
+          <Text style={styles.payButtonText}> Pay with Card</Text>
         </TouchableOpacity>
+
+
+
+
+
+
+        {showCardForm && (
+          <View style={[styles.cardForm, { marginBottom: 20 }]}>
+              <View style={styles.cardFormInputRow}>
+              <FontAwesome name="credit-card" size={20} color="#444" style={styles.cardIcon} />
+              <TextInput 
+                placeholder="1234-5678-9012-3456" 
+                style={styles.cardFormInput}
+                maxLength={19}
+                keyboardType="numeric"
+                onChangeText={text => {
+                  const formattedText = text.replace(/\s?/g, '').replace(/(\d{4})(?=\d)/g, '$1 ');
+                  setCardNumber(formattedText);
+                }}
+                value={cardNumber}
+              />
+            </View>
+            <View style={styles.cardFormRow}>
+              <TextInput 
+                placeholder="Expiration Date - MM/YY" 
+                style={[styles.cardFormInput, styles.expirationDateInput]} 
+                maxLength={5} 
+                keyboardType="numeric"
+              />
+              <TextInput 
+                placeholder="CVC" 
+                style={[styles.cardFormInput, styles.cvcInput]} 
+                maxLength={3} 
+                keyboardType="numeric"
+              />
+            </View>
+
+            <TextInput 
+              placeholder="Name on Card" 
+              style={styles.cardFormInput} 
+              maxLength={30} 
+            />
+            <TouchableOpacity style={[styles.cardFormButton, {backgroundColor: '#333', paddingBottom: 10}]}>
+              <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 16}}>Pay</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+
+
+
+
+
+
+
+
+
+
+
         <TouchableOpacity style={styles.payButton}>
-          <Text style={styles.payButtonText}>PayPal</Text>
+          <PayPalIcon name="paypal" size={30} color="#00457C" />
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.payButton}>
-          <Text style={styles.payButtonText}>ApplePay</Text>
+          <ApplePayIcon name="apple" size={30} color="#000000" />
         </TouchableOpacity>
+
+
+
+
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#F0F0F0',
-      alignItems: 'center',
-      justifyContent: 'center',
+  container: {
+    flex: 1,
+    backgroundColor: '#232323',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cartContainer: {
+    width: '90%',
+    backgroundColor: '#2E2E2E',
+    padding: 20,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
     },
-    cartContainer: {
-      width: '90%',
-      backgroundColor: '#FFFFFF',
-      padding: 20,
-      borderRadius: 10,
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5,
-      marginBottom: 20,
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    marginBottom: 20,
+  },
+  cardNumberLabel: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginRight: 10,
+  },
+  cartTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    color: '#FFFFFF',
+  },
+  cartItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+    backgroundColor: '#2E2E2E',
+    padding: 10,
+    borderRadius: 5,
+  },
+  itemName: {
+    fontSize: 18,
+    color: '#FFFFFF',
+  },
+  itemCost: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+  },
+  removeItem: {
+    backgroundColor: '#3D3D3D',
+    padding: 10,
+    borderRadius: 5,
+  },
+  emptyCart: {
+    fontSize: 18,
+    fontStyle: 'italic',
+    textAlign: 'center',
+    marginTop: 20,
+    color: '#FFFFFF',
+  },
+  totalCost: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginTop: 20,
+    color: '#FFFFFF',
+  },
+  paymentContainer: {
+    width: '90%',
+    backgroundColor: '#2E2E2E',
+    padding: 20,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
     },
-    cartTitle: {
-      fontSize: 24,
-      fontWeight: 'bold',
-      marginBottom: 20,
-    },
-    cartItem: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      marginBottom: 10,
-      backgroundColor: '#FFFFFF',
-      padding: 10,
-      borderRadius: 5,
-    },
-    itemName: {
-      fontSize: 18,
-    },
-    itemCost: {
-      fontSize: 18,
-      fontWeight: 'bold',
-    },
-    removeItem: {
-      backgroundColor: '#F0F0F0',
-      padding: 10,
-      borderRadius: 5,
-    },
-    emptyCart: {
-      fontSize: 18,
-      fontStyle: 'italic',
-      textAlign: 'center',
-      marginTop: 20,
-    },
-    totalCost: {
-      fontSize: 20,
-      fontWeight: 'bold',
-      marginTop: 20,
-    },
-    paymentContainer: {
-      width: '90%',
-      backgroundColor: '#FFFFFF',
-      padding: 20,
-      borderRadius: 10,
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5,
-    },
-    paymentTitle: {
-      fontSize: 24,
-      fontWeight: 'bold',
-      marginBottom: 20,
-    },
-    payButton: {
-      backgroundColor: '#F0F0F0',
-      padding: 15,
-      borderRadius: 5,
-      marginBottom: 10,
-    },
-    payButtonText: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      textAlign: 'center',
-    },
-  });
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    alignItems: 'center',
+  },
+  paymentTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    color: '#FFFFFF',
+  },
+  payButton: {
+    flexDirection: 'row',
+    backgroundColor: '#3D3D3D',
+    padding: 15,
+    borderRadius: 5,
+    marginBottom: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  payButtonText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#FFFFFF',
+  },
+  cardFormInput: {
+    height: 40,
+    borderColor: '#3D3D3D',
+    borderWidth: 1,
+    borderRadius: 4,
+    paddingLeft: 40,
+    marginBottom: 10,
+    color: '#FFFFFF',
+  },
+  cardIcon: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    color: '#FFFFFF',
+  },
+  cardFormRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+  expirationDateInput: {
+    flex: 1,
+    marginRight: 5,
+  },
+  cvcInput: {
+    flex: 1,
+    marginLeft: 5,
+  },
+  cardFormButton: {
+    backgroundColor: '#444',
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 20,
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cardFormButtonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  
+});
+
   
 
 export default CheckoutPage;  
@@ -150,279 +291,3 @@ export default CheckoutPage;
 
 
 
-/*import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
-import CartItem from "../component/CartItem";
-import PaymentOption from "../component/PaymentOption";
-import BillingAddress from "../component/BillingAddress";
-import PayPalButton from "../component/PayPalButton";
-import ApplePayButton from "../component/ApplePayButton";
-
-const CheckoutPage = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: 'Item 1',
-      price: 10,
-    },
-    {
-      id: 2,
-      name: 'Item 2',
-      price: 20,
-    },
-    {
-      id: 3,
-      name: 'Item 3',
-      price: 30,
-    },
-  ]);
-  const [paymentOption, setPaymentOption] = useState('Credit Card');
-  const [cardNumber, setCardNumber] = useState('');
-  const [expiryDate, setExpiryDate] = useState('');
-  const [cvv, setCVV] = useState('');
-  const [billingAddress, setBillingAddress] = useState({
-    streetAddress: '',
-    city: '',
-    state: '',
-    zipCode: '',
-  });
-  const [email, setEmail] = useState('');
-  const [cardNumberError, setCardNumberError] = useState(null);
-  const [expiryDateError, setExpiryDateError] = useState(null);
-  const [cvvError, setCVVError] = useState(null);
-
-  const handlePaymentOptionChange = (option) => {
-    setPaymentOption(option);
-  };
-
-  const handleCardNumberChange = (value) => {
-    setCardNumber(value);
-  };
-
-  const handleExpiryDateChange = (value) => {
-    setExpiryDate(value);
-  };
-
-  const handleCVVChange = (value) => {
-    setCVV(value);
-  };
-
-  const handleBillingAddressChange = (address) => {
-    setBillingAddress(address);
-  };
-
-  const handleEmailChange = (value) => {
-    setEmail(value);
-  };
-
-  const handlePayPalSuccess = () => {
-    console.log('PayPal payment successful');
-  };
-
-  const handleDeleteCartItem = (index) => {
-    const updatedCartItems = [...cartItems];
-    updatedCartItems.splice(index, 1);
-    setCartItems(updatedCartItems);
-  };
-  
-
-  const handleAddCartItem = (item) => {
-    const updatedCartItems = [...cartItems, item];
-    setCartItems(updatedCartItems);
-  };
-  
-
-  const renderCartItems = () => {
-    return cartItems.map((item, index) => (
-      <CartItem
-        key={item.id}
-        index={index}
-        item={item}
-        onDelete={handleDeleteCartItem}
-      />
-    ));
-  };
-
-  const total = cartItems.reduce((acc, item) => acc + item.price, 0);
-
-  
-  return (
-      <Text>Checkout Page</Text>
-  );
-  
-
-  
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Checkout</Text>
-      <View style={styles.cart}>
-        <Text style={styles.cartTitle}>Cart</Text>
-        {renderCartItems()}
-        <View style={styles.cartTotal}>
-          <Text style={styles.cartTotalLabel}>Total:</Text>
-          <Text style={styles.cartTotalAmount}>${total}</Text>
-        </View>
-      </View>
-      <View style={styles.paymentOptions}>
-        <Text style={styles.paymentOptionsLabel}>Payment Options:</Text>
-        <PaymentOption
-          option="Credit Card"
-          selected={paymentOption === 'Credit Card'}
-          onPress={() => handlePaymentOptionChange('Credit Card')}
-        />
-        <PaymentOption
-          option="PayPal"
-          selected={paymentOption === 'PayPal'}
-          onPress={() => handlePaymentOptionChange('PayPal')}
-        />
-        <PaymentOption
-          option="Apple Pay"
-          selected={paymentOption === 'Apple Pay'}
-          onPress={() => handlePaymentOptionChange('Apple Pay')}
-        />
-      </View>
-      {paymentOption === 'Credit Card' && (
-        <View style={styles.creditCard}>
-          <TextInput
-            style={styles.creditCardInput}
-            onChangeText={handleCardNumberChange}
-            value={cardNumber}
-            placeholder="Card Number"
-          />
-          {cardNumberError && <Text style={styles.error}>{cardNumberError}</Text>}
-          <View style={styles.creditCardExpiryCVV}>
-            <TextInput
-              style={styles.creditCardExpiry}
-              onChangeText={handleExpiryDateChange}
-              value={expiryDate}
-              placeholder="MM/YY"
-            />
-            <TextInput
-              style={styles.creditCardCVV}
-              onChangeText={handleCVVChange}
-              value={cvv}
-              placeholder="CVV"
-            />
-          </View>
-          {expiryDateError && <Text style={styles.error}>{expiryDateError}</Text>}
-          {cvvError && <Text style={styles.error}>{cvvError}</Text>}
-        </View>
-      )}
-      <View style={styles.billingAddress}>
-        <Text style={styles.billingAddressLabel}>Billing Address:</Text>
-        <BillingAddress onChange={handleBillingAddressChange} />
-      </View>
-      <TextInput
-        style={styles.emailInput}
-        onChangeText={handleEmailChange}
-        value={email}
-        placeholder="Email"
-      />
-      <View style={styles.submit}>
-        <Text style={styles.submitTotal}>Total: ${total}</Text>
-        {paymentOption === 'PayPal' ? (
-          <PayPalButton amount={total} onSuccess={handlePayPalSuccess} />
-        ) : paymentOption === 'Apple Pay' ? (
-          <ApplePayButton amount={total} />
-        ) : (
-          <Button title="Submit Payment" onPress={() => console.log('Payment submitted')} />
-        )}
-      </View>
-    </View>
-    );
-    
-};    
-
-export default CheckoutPage;
-
-
-
-const styles = StyleSheet.create({
-    container: {
-      padding: 16,
-    },
-    title: {
-      fontSize: 24,
-      fontWeight: 'bold',
-      marginBottom: 16,
-    },
-    cart: {
-      marginBottom: 16,
-    },
-    cartTitle: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      marginBottom: 8,
-    },
-    cartTotal: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginTop: 8,
-    },
-    cartTotalLabel: {
-      fontSize: 18,
-      fontWeight: 'bold',
-    },
-    cartTotalAmount: {
-      fontSize: 18,
-    },
-    paymentOptions: {
-      marginBottom: 16,
-    },
-    paymentOptionsLabel: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      marginBottom: 8,
-    },
-    creditCard: {
-      marginBottom: 16,
-    },
-    creditCardInput: {
-      borderWidth: 1,
-      borderColor: '#ccc',
-      borderRadius: 4,
-      padding: 8,
-      marginBottom: 8,
-    },
-    creditCardExpiryCVV: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    },
-    creditCardExpiry: {
-      flex: 1,
-      marginRight: 8,
-    },
-    creditCardCVV: {
-      flex: 1,
-      marginLeft: 8,
-    },
-    error: {
-      color: 'red',
-      marginBottom: 8,
-    },
-    billingAddress: {
-      marginBottom: 16,
-    },
-    billingAddressLabel: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      marginBottom: 8,
-    },
-    emailInput: {
-      borderWidth: 1,
-      borderColor: '#ccc',
-      borderRadius: 4,
-      padding: 8,
-      marginBottom: 16,
-    },
-    submit: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-    },
-    submitTotal: {
-      fontSize: 18,
-      fontWeight: 'bold',
-    },
-  });
-  */

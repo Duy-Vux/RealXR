@@ -10,6 +10,7 @@ export default class Artist extends React.Component {
         id: 0,
         artist: "JustinBieber",
         title: "Live Concert RealXR 1",
+        price: 10,
       },
       {
         id: 1,
