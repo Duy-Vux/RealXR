@@ -9,7 +9,7 @@ export default class Login extends React.Component {
       <LoginScreen
         logoImageSource={require("../../assets/logo.png")}
         onLoginPress={() => {
-          this.props.navigation.navigate("Discover");
+          this.props.navigation.navigate("Orders");
         }}
         onSignupPress={() => {}}
         onEmailChange={(email) => {}}

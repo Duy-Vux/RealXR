@@ -2,8 +2,9 @@ import React from 'react';
 import Container from '../component/Container';
 import Label from '../component/Label';
 import ScreenHeader from '../component/ScreenHeader';
-import {View, Text, StyleSheet, FlatList, Pressable, ScrollView, Image} from 'react-native';
-//import Label from '../component/Label';
+import {View, Text, StyleSheet, FlatList, Pressable, ScrollView, Image, TouchableOpacity} from 'react-native';
+import LoginScreen, { SocialButton } from "react-native-login-screen";
+
 
 export default function Orders({navigation}) {
   const OrderCard = ({item}) => {
@@ -29,14 +30,18 @@ export default function Orders({navigation}) {
               width: '85%',
               paddingVertical: 10,
               paddingHorizontal: '10%',
-              backgroundColor: "#007363",
+              backgroundColor: color,
               justifyContent: 'center',
               alignItems: 'center',
             }}>
+            {/*
             <Label
               text={status}
               style={{fontSize: '14', color: "#FFFFFF"}}
-            />
+          />*/}
+            <TouchableOpacity>
+              <Label text={status} style={styles.ButtonText} />
+            </TouchableOpacity>
           </Pressable>
          
         </View>
@@ -58,7 +63,6 @@ export default function Orders({navigation}) {
               width: 35,
               marginLeft: 4,
               borderRadius: 3,
-             
             }}
           />
         </View>
@@ -68,11 +72,21 @@ export default function Orders({navigation}) {
   };
    return (
     <Container >
-      <ScreenHeader navigation={navigation} label="Past Orders" />
+      {/*<ScreenHeader navigation={navigation} label="Past Orders" />*/}
+      
+      <View style={{paddingVertical: 20, alignItems: 'center',}}>
+        <Label
+          text="Orders"
+          style={{opacity: 0.5, fontSize: 34, color: "#000000",}}
+        />
+      </View>
+      
+      
+
       <ScrollView>
       <View style={{paddingVertical: 20}}>
         <Label
-          text="Sept 23, 2021"
+          text="Jan 10, 2023"
           style={{opacity: 0.5, fontSize: 13}}
         />
       </View>
@@ -80,31 +94,30 @@ export default function Orders({navigation}) {
         item={{
           label: 'Justin Tim',
           amount: '$40',
-          status: 'Used',
+          status: 'Join Concert',
           color: 'green',
         }}
       />
-    
      
      <View style={{paddingVertical: 20}}>
         <Label
-          text="Sept 23, 2021"
+          text="Jun 18th, 2022"
           style={{opacity: 0.5, fontSize: 13}}
         />
       </View>
       <OrderCard
         item={{
           label: 'Selena Gomez',
-          amount: '$40',
-          status: 'Pending',
-          color: 'blue',
+          amount: '$34',
+          status: '  Upcoming  ',
+          color: '#0063ff',
         }}
       />
  
  
       <View style={{paddingVertical: 20}}>
         <Label
-          text="January 23, 2021"
+          text="April 23rd, 2021"
           style={{opacity: 0.5, fontSize: 13}}
         />
       </View>
@@ -112,38 +125,32 @@ export default function Orders({navigation}) {
         item={{
           label: 'Adele',
           amount: '$50',
-          status: 'Canceled',
-          color: 'red',
+          status: '    Expired     ',
+          color: '#ee0000',
         }}
       />
  
- 
- 
- 
- 
- 
+
  <View style={{paddingVertical: 20}}>
         <Label
-          text="January 24th, 2021"
+          text="January 4th, 2021"
           style={{opacity: 0.5, fontSize: 13}}
         />
       </View>
       <OrderCard
         item={{
-          label: 'Adele',
+          label: 'Weekend',
           amount: '$50',
-          status: 'Canceled',
-          color: 'red',
+          status: '    Expired     ',
+          color: '#ee0000',
         }}
       />
- 
- 
- 
- 
+
       </ScrollView>
     </Container>
    
   );
+  
  }
  
  
@@ -153,9 +160,16 @@ export default function Orders({navigation}) {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: "#ffffff",
+    backgroundColor: "#ffff", /*#4937f5 */
     paddingHorizontal: 20,
-   
   },
+  Button: {
+    padding: 5,
+  },
+
+  ButtonText: {
+    fontSize: '14', color: "#FFFFFF",
+  },
+
  });
 
