@@ -7,7 +7,7 @@ export default class Login extends React.Component {
   render() {
     return (
       <LoginScreen
-        logoImageSource={require("../../assets/logo.png")}
+        logoImageSource={require("../assets/logo.png")}
         onLoginPress={() => {
           this.props.navigation.navigate("Discover");
         }}
@@ -17,13 +17,13 @@ export default class Login extends React.Component {
       >
         <SocialButton
           text="Continue with Google"
-          imageSource={require("../../assets/google-logo.png")}
+          imageSource={require("../assets/google-logo.png")}
           onPress={() => {}}
         />
         <SocialButton text="Continue with Facebook" onPress={() => {}} />
         <SocialButton
           text="Continue with Twitter"
-          imageSource={require("../../assets/twitter-logo.png")}
+          imageSource={require("../assets/twitter-logo.png")}
           onPress={() => {}}
         />
       </LoginScreen>

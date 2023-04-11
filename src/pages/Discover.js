@@ -1,6 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import {StyleSheet,Text,View,TouchableOpacity,ScrollView,FlatList,} from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  FlatList,
+} from "react-native";
 import ConcertCard from "../component/ConcertCard";
 
 const data = [
@@ -16,7 +23,7 @@ const ConcertRow = ({ concerts, navigation }) => (
       <TouchableOpacity
         key={concert}
         onPress={() => {
-          navigation.navigate("Artist");
+          navigation.navigate("ConcertDetails");
         }}
       >
         <ConcertCard />
@@ -32,14 +39,19 @@ export default class Discover extends React.Component {
           data={data}
           keyExtractor={(item) => item.id}
           ListHeaderComponent={() => (
-            <View style={{ marginTop: 40, paddingTop: 50 }}>
-              <Text style={{ paddingBottom: 20 }}>Discover Page</Text>
+            <View style={{ marginTop: 20, paddingTop: 20 }}>
+              <Text style={{ paddingBottom: 20, fontSize: 40 }}>
+                Discover Concerts
+              </Text>
             </View>
           )}
           renderItem={({ item }) => (
             <View style={{ marginTop: 40 }}>
               <Text>{item.title}</Text>
-              <ConcertRow concerts={item.concerts} />
+              <ConcertRow
+                concerts={item.concerts}
+                navigation={this.props.navigation}
+              />
             </View>
           )}
         />
@@ -59,4 +71,5 @@ const styles = StyleSheet.create({
   text: {
     backgroundColor: "red",
   },
+  header: {},
 });

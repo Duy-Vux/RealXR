@@ -36,7 +36,9 @@ export default class ConcertCard extends React.Component {
                   />
                   <View style={{ marginLeft: 8 }}>
                     <Text style={styles.channelText}>{this.props.artist}</Text>
-                    <Text style={{ fontSize: 12 }}>{this.props.title}</Text>
+                    <Text style={{ fontSize: 12, color: "#000000" }}>
+                      {this.props.title}
+                    </Text>
                     <TagChip text="English" />
                   </View>
                 </View>
