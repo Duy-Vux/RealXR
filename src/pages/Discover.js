@@ -6,6 +6,7 @@ import {
   View,
   ScrollView,
   FlatList,
+  TouchableOpacity,
   Image,
 } from "react-native";
 import ConcertCard from "../component/ConcertCard";
@@ -94,7 +95,7 @@ export default class Discover extends React.Component {
                       <TouchableOpacity
                         key={concert}
                         onPress={() => {
-                          navigation.navigate("ConcertDetails");
+                          this.props.navigation.navigate("Artist");
                         }}
                         style={{ marginRight: 25 }}
                       >
