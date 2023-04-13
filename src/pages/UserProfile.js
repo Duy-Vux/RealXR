@@ -1,8 +1,8 @@
-import React, {useState} from "react";
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
   TextInput,
   Modal,
   TouchableWithoutFeedback,
@@ -11,34 +11,32 @@ import {
 import ProfilePic from "../component/ProfilePic";
 import Header from "../component/Header";
 
-
 const UserProfile = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const handleEmailChange = (newEmail) => {
     setEmail(newEmail);
   };
 
-  const [phone, setPhoneNumber] = useState('');
-  const [card, setCardNumber] = useState('');
-  const [expiration, setExpirationDate] = useState('');
-  const [cvv, setCVVNumber] = useState('');
+  const [phone, setPhoneNumber] = useState("");
+  const [card, setCardNumber] = useState("");
+  const [expiration, setExpirationDate] = useState("");
+  const [cvv, setCVVNumber] = useState("");
 
-  
   return (
     <View style={styles.container}>
       <Header text="Profile" />
-      <ProfilePic style={styles.profilepic}/>
+      <ProfilePic style={styles.profilepic} />
       <Text style={styles.profileName}>John Doe</Text>
       <Text style={styles.header}>Personal:</Text>
       <View style={styles.emailContainer}>
         <Text style={styles.label}>Email:</Text>
         <TextInput
-        style={styles.input}
-        value={email}
-        onChangeText={handleEmailChange}
-        placeholder="Enter your email"
-        keyboardType="email-address"
+          style={styles.input}
+          value={email}
+          onChangeText={handleEmailChange}
+          placeholder="Enter your email"
+          keyboardType="email-address"
         />
       </View>
       <View style={styles.emailContainer}>
@@ -46,10 +44,10 @@ const UserProfile = () => {
         <TextInput
           style={styles.input}
           placeholder="Enter phone number"
-          mask={'(999) 999-9999'}
+          mask={"(999) 999-9999"}
           value={phone}
           onChangeText={(phone) => setPhoneNumber(setPhoneNumber)}
-          keyboardType='number-pad'
+          keyboardType="number-pad"
         />
       </View>
       <Text style={styles.header}>Billing: </Text>
@@ -58,10 +56,10 @@ const UserProfile = () => {
         <TextInput
           style={styles.input}
           placeholder="Enter card number"
-          mask={'(999) 999-9999'}
+          mask={"(999) 999-9999"}
           value={card}
           onChangeText={(card) => setCardNumber(setCardNumber)}
-          keyboardType='number-pad'
+          keyboardType="number-pad"
         />
       </View>
       <View style={styles.emailContainer}>
@@ -69,10 +67,10 @@ const UserProfile = () => {
         <TextInput
           style={styles.input}
           placeholder="Enter experation date"
-          mask={'(999) 999-9999'}
+          mask={"(999) 999-9999"}
           value={expiration}
           onChangeText={(expiration) => setExpirationDate(setExpirationDate)}
-          keyboardType='number-pad'
+          keyboardType="number-pad"
         />
       </View>
       <View style={styles.emailContainer}>
@@ -80,13 +78,12 @@ const UserProfile = () => {
         <TextInput
           style={styles.input}
           placeholder="Enter cvv number"
-          mask={'123'}
+          mask={"123"}
           value={cvv}
           onChangeText={(cvv) => setCVVNumber(setCVVNumber)}
-          keyboardType='number-pad'
+          keyboardType="number-pad"
         />
       </View>
-      
     </View>
   );
 };
@@ -94,17 +91,17 @@ const UserProfile = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 80,
   },
   profileName: {
     fontSize: 24,
-    fontWeight: 'bold',
-    alignItems: 'center',
+    fontWeight: "bold",
+    alignItems: "center",
     margin: 20,
   },
   profilepic: {
-    alignItems: 'center',
+    alignItems: "center",
     margin: 20,
   },
   input: {
@@ -112,10 +109,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   emailContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%',
-    backgroundColor: 'lightgray',
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    backgroundColor: "lightgray",
   },
   label: {
     fontSize: 18,
@@ -123,9 +120,9 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   item: {
-    width: '100%',
+    width: "100%",
     padding: 10,
-    borderBottomColor: 'gray',
+    borderBottomColor: "gray",
   },
   dropdown: {
     borderColor: "#B7B7B7",
@@ -135,7 +132,7 @@ const styles = StyleSheet.create({
     color: "grey",
   },
   header: {
-    alignSelf: "left",
+    alignSelf: "center",
     fontSize: 20,
     margin: 10,
   },

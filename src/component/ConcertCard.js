@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import TagChip from "./TagChip";
 
@@ -8,18 +8,24 @@ export default class ConcertCard extends React.Component {
   render() {
     return (
       <>
-        <View style={{ marginTop: 16 }}>
+        <View style={{ marginTop: 16, marginRight: 25 }}>
           <Text>{this.props.header}</Text>
           <View style={{ flexDirection: "row", marginTop: 8 }}>
             <View>
               <View>
-                <Image
-                  source={{ uri: "https://picsum.photos/200/300" }}
-                  style={{
-                    height: this.props.imageSize === "large" ? 220 : 180,
-                    width: this.props.imageSize === "large" ? 390 : 300,
+                <TouchableOpacity
+                  onPress={() => {
+                    this.props.navigation.navigate("ConcertDetails");
                   }}
-                />
+                >
+                  <Image
+                    source={{ uri: "https://picsum.photos/200/300" }}
+                    style={{
+                      height: this.props.imageSize === "large" ? 220 : 180,
+                      width: this.props.imageSize === "large" ? 390 : 300,
+                    }}
+                  />
+                </TouchableOpacity>
               </View>
 
               <View
@@ -30,10 +36,16 @@ export default class ConcertCard extends React.Component {
                 }}
               >
                 <View style={{ flexDirection: "row" }}>
-                  <Image
-                    source={{ uri: "https://picsum.photos/200/300" }}
-                    style={{ width: 50, height: 50, borderRadius: 25 }}
-                  />
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.props.navigation.navigate("Artist");
+                    }}
+                  >
+                    <Image
+                      source={{ uri: "https://picsum.photos/200/300" }}
+                      style={{ width: 50, height: 50, borderRadius: 25 }}
+                    />
+                  </TouchableOpacity>
                   <View style={{ marginLeft: 8 }}>
                     <Text style={styles.channelText}>{this.props.artist}</Text>
                     <Text style={{ fontSize: 12, color: "#000000" }}>
