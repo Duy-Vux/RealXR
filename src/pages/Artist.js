@@ -66,12 +66,12 @@ export default class Artist extends React.Component {
     ));
     return (
       <>
-        <View style={{ marginTop: 50, marginLeft: 20 }}>
+        <View style={{ marginTop: 40,}}>
           <Image
             source={{ uri: "https://picsum.photos/200/300" }}
-            style={{ width: 50, height: 50, borderRadius: 25 }}
+            style={{ width: 100, height: 100, borderRadius: 50, alignSelf: "center", paddingBottom: 25,}}
           />
-          <Text>Justin Bieber</Text>
+          <Text style={{textAlign: "center", fontFamily: "Cochin", fontSize: 20,}}>Justin Bieber</Text>
         </View>
         <ScrollView>
           <View style={{ marginTop: 40 }}>
