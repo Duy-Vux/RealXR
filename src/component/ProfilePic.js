@@ -5,7 +5,7 @@ export default function ProfilePic() {
   return (
     <View>
       <Image
-        source={require("../assets/profile.jpg")}
+        source={{uri: "https://picsum.photos/200/300" }}
         style={{
           width: 100,
           height: 100,
