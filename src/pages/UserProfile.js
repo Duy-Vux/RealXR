@@ -1,8 +1,8 @@
-import React, {useState} from "react";
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
   TextInput,
   Modal,
   TouchableOpacity,
@@ -12,34 +12,31 @@ import {
 } from "react-native";
 import ProfilePic from "../component/ProfilePic";
 
-
-
 const UserProfile = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const handleEmailChange = (newEmail) => {
     setEmail(newEmail);
   };
 
-  const [phone, setPhoneNumber] = useState('');
-  const [card, setCardNumber] = useState('');
-  const [expiration, setExpirationDate] = useState('');
-  const [cvv, setCVVNumber] = useState('');
+  const [phone, setPhoneNumber] = useState("");
+  const [card, setCardNumber] = useState("");
+  const [expiration, setExpirationDate] = useState("");
+  const [cvv, setCVVNumber] = useState("");
 
-  
   return (
     <View style={styles.container}>
-      <ProfilePic style={styles.profilepic}/>
+      <ProfilePic style={styles.profilepic} />
       <Text style={styles.profileName}>John Doe</Text>
       <Text style={styles.header}>Personal:</Text>
       <View style={styles.emailContainer}>
         <Text style={styles.label}>Email:</Text>
         <TextInput
-        style={styles.input}
-        value={email}
-        onChangeText={handleEmailChange}
-        placeholder="Enter your email"
-        keyboardType="email-address"
+          style={styles.input}
+          value={email}
+          onChangeText={handleEmailChange}
+          placeholder="Enter your email"
+          keyboardType="email-address"
         />
       </View>
       <View style={styles.emailContainer}>
@@ -47,10 +44,10 @@ const UserProfile = () => {
         <TextInput
           style={styles.input}
           placeholder="Enter phone number"
-          mask={'(999) 999-9999'}
+          mask={"(999) 999-9999"}
           value={phone}
           onChangeText={(phone) => setPhoneNumber(setPhoneNumber)}
-          keyboardType='number-pad'
+          keyboardType="number-pad"
         />
       </View>
       <Text style={styles.header}>Billing: </Text>
@@ -59,10 +56,10 @@ const UserProfile = () => {
         <TextInput
           style={styles.input}
           placeholder="Enter card number"
-          mask={'(999) 999-9999'}
+          mask={"(999) 999-9999"}
           value={card}
           onChangeText={(card) => setCardNumber(setCardNumber)}
-          keyboardType='number-pad'
+          keyboardType="number-pad"
         />
       </View>
       <View style={styles.emailContainer}>
@@ -70,10 +67,10 @@ const UserProfile = () => {
         <TextInput
           style={styles.input}
           placeholder="Enter experation date"
-          mask={'(999) 999-9999'}
+          mask={"(999) 999-9999"}
           value={expiration}
           onChangeText={(expiration) => setExpirationDate(setExpirationDate)}
-          keyboardType='number-pad'
+          keyboardType="number-pad"
         />
       </View>
       <View style={styles.emailContainer}>
@@ -81,20 +78,17 @@ const UserProfile = () => {
         <TextInput
           style={styles.input}
           placeholder="Enter cvv number"
-          mask={'123'}
+          mask={"123"}
           value={cvv}
           onChangeText={(cvv) => setCVVNumber(setCVVNumber)}
-          keyboardType='number-pad'
+          keyboardType="number-pad"
         />
       </View>
       <View>
         <TouchableOpacity>
-              <Text style = {styles.button}>
-                Create Concert
-              </Text>
+          <Text style={styles.button}>Create Concert</Text>
         </TouchableOpacity>
       </View>
-      
     </View>
   );
 };
@@ -102,19 +96,18 @@ const UserProfile = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 80,
-    
   },
   profileName: {
     fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
     margin: 20,
     fontFamily: "Cochin",
   },
   profilepic: {
-    alignItems: 'center',
+    alignItems: "center",
     margin: 20,
   },
   input: {
@@ -123,10 +116,10 @@ const styles = StyleSheet.create({
     fontFamily: "Cochin",
   },
   emailContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%',
-    backgroundColor: 'lightgray',
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    backgroundColor: "lightgray",
   },
   label: {
     fontSize: 18,
@@ -135,16 +128,15 @@ const styles = StyleSheet.create({
     fontFamily: "Cochin",
   },
   item: {
-    width: '100%',
+    width: "100%",
     padding: 10,
-    borderBottomColor: 'gray',
+    borderBottomColor: "gray",
     fontFamily: "Cochin",
   },
   placeholderStyles: {
     color: "grey",
   },
   header: {
-    alignSelf: "left",
     fontSize: 20,
     margin: 10,
     fontFamily: "Cochin",
@@ -154,13 +146,13 @@ const styles = StyleSheet.create({
     marginTop: 30,
     borderWidth: 1,
     padding: 10,
-    borderColor: 'lightblue',
-    backgroundColor: 'lightblue',
+    borderColor: "lightblue",
+    backgroundColor: "lightblue",
     fontSize: 18,
-    textAlign:"center",
+    textAlign: "center",
     alignItems: "center",
     fontFamily: "Cochin",
- }
+  },
 });
 
 export default UserProfile;

@@ -31,11 +31,12 @@ const data = [
 
 const ConcertRow = ({ concerts, navigation }) => (
   <ScrollView horizontal style={{ paddingHorizontal: 10 }}>
-    {concerts.map((concert) => (
+    {concerts.map((concert, index) => (
       <ConcertCard
         title="Test Concert"
         artist="Random Artist"
         navigation={navigation}
+        key={index}
       />
     ))}
   </ScrollView>
