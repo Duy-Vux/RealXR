@@ -14,6 +14,7 @@ export default class Login extends React.Component {
         onSignupPress={() => {}}
         onEmailChange={(email) => {}}
         onPasswordChange={(password) => {}}
+        style={{ backgroundColor: "#ffffff" }}
       >
         <SocialButton
           text="Continue with Google"
