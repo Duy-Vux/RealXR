@@ -6,9 +6,7 @@ import {
   TextInput,
   Modal,
   TouchableOpacity,
-  FlatList,
-  Button,
-  Picker,
+  ScrollView,
 } from "react-native";
 import ProfilePic from "../component/ProfilePic";
 
@@ -25,72 +23,74 @@ const UserProfile = () => {
   const [cvv, setCVVNumber] = useState("");
 
   return (
-    <View style={styles.container}>
-      <ProfilePic style={styles.profilepic} />
-      <Text style={styles.profileName}>John Doe</Text>
-      <View>
-        <TouchableOpacity>
-          <Text style={styles.button}>Following</Text>
-        </TouchableOpacity>
+    <ScrollView>
+      <View style={styles.container}>
+        <ProfilePic style={styles.profilepic} />
+        <Text style={styles.profileName}>John Doe</Text>
+        <View>
+          <TouchableOpacity>
+            <Text style={styles.button}>Following</Text>
+          </TouchableOpacity>
+        </View>
+        <Text style={styles.header}>Personal:</Text>
+        <View style={styles.emailContainer}>
+          <Text style={styles.label}>Email:</Text>
+          <TextInput
+            style={styles.input}
+            value={email}
+            onChangeText={handleEmailChange}
+            placeholder="Enter your email"
+            keyboardType="email-address"
+          />
+        </View>
+        <View style={styles.emailContainer}>
+          <Text style={styles.label}>Phone:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter phone number"
+            mask={"(999) 999-9999"}
+            value={phone}
+            onChangeText={(phone) => setPhoneNumber(setPhoneNumber)}
+            keyboardType="number-pad"
+          />
+        </View>
+        <Text style={styles.header}>Billing: </Text>
+        <View style={styles.emailContainer}>
+          <Text style={styles.label}>Card Number:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter card number"
+            mask={"(999) 999-9999"}
+            value={card}
+            onChangeText={(card) => setCardNumber(setCardNumber)}
+            keyboardType="number-pad"
+          />
+        </View>
+        <View style={styles.emailContainer}>
+          <Text style={styles.label}>Expiration Date:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter experation date"
+            mask={"(999) 999-9999"}
+            value={expiration}
+            onChangeText={(expiration) => setExpirationDate(setExpirationDate)}
+            keyboardType="number-pad"
+          />
+        </View>
+        <View style={styles.emailContainer}>
+          <Text style={styles.label}>CVV Number:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter cvv number"
+            mask={"123"}
+            value={cvv}
+            onChangeText={(cvv) => setCVVNumber(setCVVNumber)}
+            keyboardType="number-pad"
+          />
+        </View>
+        
       </View>
-      <Text style={styles.header}>Personal:</Text>
-      <View style={styles.emailContainer}>
-        <Text style={styles.label}>Email:</Text>
-        <TextInput
-          style={styles.input}
-          value={email}
-          onChangeText={handleEmailChange}
-          placeholder="Enter your email"
-          keyboardType="email-address"
-        />
-      </View>
-      <View style={styles.emailContainer}>
-        <Text style={styles.label}>Phone:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter phone number"
-          mask={"(999) 999-9999"}
-          value={phone}
-          onChangeText={(phone) => setPhoneNumber(setPhoneNumber)}
-          keyboardType="number-pad"
-        />
-      </View>
-      <Text style={styles.header}>Billing: </Text>
-      <View style={styles.emailContainer}>
-        <Text style={styles.label}>Card Number:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter card number"
-          mask={"(999) 999-9999"}
-          value={card}
-          onChangeText={(card) => setCardNumber(setCardNumber)}
-          keyboardType="number-pad"
-        />
-      </View>
-      <View style={styles.emailContainer}>
-        <Text style={styles.label}>Expiration Date:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter experation date"
-          mask={"(999) 999-9999"}
-          value={expiration}
-          onChangeText={(expiration) => setExpirationDate(setExpirationDate)}
-          keyboardType="number-pad"
-        />
-      </View>
-      <View style={styles.emailContainer}>
-        <Text style={styles.label}>CVV Number:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter cvv number"
-          mask={"123"}
-          value={cvv}
-          onChangeText={(cvv) => setCVVNumber(setCVVNumber)}
-          keyboardType="number-pad"
-        />
-      </View>
-      
-    </View>
+    </ScrollView>
   );
 };
 
