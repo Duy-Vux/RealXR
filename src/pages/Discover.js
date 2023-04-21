@@ -12,6 +12,12 @@ import {
 import ConcertCard from "../component/ConcertCard";
 
 const data = [
+  {
+    id: "5",
+    title: "Featured Artist",
+    concerts: [13, 14, 15, 1, 2, 3],
+    showBigImage: false,
+  },
   { id: "1", title: "Trending", concerts: [1, 2, 3], showBigImage: true },
   { id: "2", title: "Live", concerts: [4, 5, 6], showBigImage: true },
   { id: "3", title: "Upcoming", concerts: [7, 8, 9], showBigImage: true },
@@ -20,12 +26,6 @@ const data = [
     title: "Suggested Artist",
     concerts: [10, 11, 12],
     showBigImage: true,
-  },
-  {
-    id: "5",
-    title: "Featured Artist",
-    concerts: [13, 14, 15],
-    showBigImage: false,
   },
 ];
 
