@@ -98,7 +98,7 @@ export default class Discover extends React.Component {
                         onPress={() => {
                           this.props.navigation.navigate("Artist");
                         }}
-                        style={{ marginRight: 25 }}
+                        style={{ marginRight: 25, paddingTop: 20 }}
                       >
                         <View
                           style={{
