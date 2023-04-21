@@ -28,6 +28,11 @@ const UserProfile = () => {
     <View style={styles.container}>
       <ProfilePic style={styles.profilepic} />
       <Text style={styles.profileName}>John Doe</Text>
+      <View>
+        <TouchableOpacity>
+          <Text style={styles.button}>Following</Text>
+        </TouchableOpacity>
+      </View>
       <Text style={styles.header}>Personal:</Text>
       <View style={styles.emailContainer}>
         <Text style={styles.label}>Email:</Text>
@@ -84,11 +89,7 @@ const UserProfile = () => {
           keyboardType="number-pad"
         />
       </View>
-      <View>
-        <TouchableOpacity>
-          <Text style={styles.button}>Create Concert</Text>
-        </TouchableOpacity>
-      </View>
+      
     </View>
   );
 };
@@ -143,7 +144,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   button: {
-    marginTop: 30,
+    marginTop: 25,
+    marginBottom: 30,
     borderWidth: 1,
     padding: 10,
     borderColor: "lightblue",
