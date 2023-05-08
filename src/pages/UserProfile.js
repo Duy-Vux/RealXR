@@ -54,6 +54,27 @@ const UserProfile = () => {
             keyboardType="number-pad"
           />
         </View>
+        <View style={styles.emailContainer}>
+          <Text style={styles.label}>Birthday:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="mm/dd/yyyy"
+            mask={"07/28/2002"}
+            value={phone}
+            onChangeText={(phone) => setPhoneNumber(setPhoneNumber)}
+            keyboardType="numeric"
+          />
+        </View>
+        <View style={styles.emailContainer}>
+          <Text style={styles.label}>Gender:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="gender"
+            mask={"Select"}
+            value={phone}
+            onChangeText={(phone) => setPhoneNumber(setPhoneNumber)}
+          />
+        </View>
         <Text style={styles.header}>Billing: </Text>
         <View style={styles.emailContainer}>
           <Text style={styles.label}>Card Number:</Text>
